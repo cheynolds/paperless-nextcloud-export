@@ -1,0 +1,10 @@
+{
+  "rules": [
+    { "if": { "tags_any": ["Taxes"] }, 		"to": "FAMILY/Finance/Taxes/{year}/" },
+    { "if": { "tags_any": ["Insurance"] }, 	"to": "FAMILY/Finance/Insurance/{year}/" },
+    { "if": { "correspondent": "Amazon" }, 	"to": "FAMILY/Receipts/Amazon/{year}/" },
+    { "default": true, "to": "FAMILY/Unfiled/{year}/" }
+  ],
+  "filename_template": "{created} - {title}.pdf",
+  "upload": { "original": false, "overwrite": true }
+}
