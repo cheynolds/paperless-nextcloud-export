@@ -1,4 +1,49 @@
 #!/usr/bin/env python3
+#!/usr/bin/env python3
+"""
+Paperless → Nextcloud Export Script
+===================================
+
+This script exports documents from Paperless-ngx into Nextcloud via WebDAV.
+
+Features:
+- Iterates over Paperless documents using its REST API.
+- Matches rules defined in `routing.json` (tags, correspondents, type, title).
+- Creates remote directories in Nextcloud (MKCOL).
+- Uploads documents with configurable filename templates.
+- Supports overwrite vs append behavior.
+- Designed for both generic Docker/Linux hosts and Unraid setups.
+
+Requirements:
+- Paperless-ngx with API enabled
+- Tika and Gotenberg containers running for Paperless
+- Nextcloud instance with WebDAV enabled (`remote.php/dav/files/<username>/`)
+
+Environment variables (via `.env`):
+- PAPERLESS_URL
+- PAPERLESS_TOKEN
+- BASE_NC_URL
+- NC_USER
+- NC_PASS
+
+Usage:
+    python3 export_tag_to_nextcloud.py \
+        --paperless "$PAPERLESS_URL" \
+        --token "$PAPERLESS_TOKEN" \
+        --base-nc-url "$BASE_NC_URL" \
+        --nc-user "$NC_USER" \
+        --nc-pass "$NC_PASS" \
+        --routing /path/to/routing.json
+
+Author: CHEYNOLDS  (https://github.com/cheynolds)
+License: MIT
+"""
+
+
+
+
+
+
 import argparse, base64, json, os, ssl, urllib.parse, urllib.request, pathlib
 
 def http(method, url, headers=None, data=None, insecure=False, ok=(200,201,204,207)):
